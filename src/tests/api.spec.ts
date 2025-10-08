@@ -1,26 +1,11 @@
 import { test, expect } from '@playwright/test';
-import * as fs from 'fs';
-import * as path from 'path';
 import { API_URLS } from '../config/urls';
+import { loadDemoCredentials } from '../constants/application-constants';
 
 /**
- * Credentials interface for user authentication
- * 
- * @description Defines the structure for user credentials used in API tests
+ * Load credentials with fallback to default values
  */
-interface Credentials {
-  username: string;
-  password: string;
-}
-
-const baseDir = path.dirname(path.dirname(__dirname));
-const filePath = path.join(baseDir, "data", "credentials.json");
-
-if (!fs.existsSync(filePath)) {
-  throw new Error(`Error: ${filePath} not found.`);
-}
-
-const credentials: Credentials = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+const credentials = loadDemoCredentials();
 const USERNAME = credentials.username;
 const PASSWORD = credentials.password;
 
