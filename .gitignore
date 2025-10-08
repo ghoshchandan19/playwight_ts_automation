@@ -45,4 +45,7 @@ pids/
 coverage/
 
 # Credentials and sensitive data
-src/data/credentials.json
+data/
+src/data/
+credentials.json
+*.json
